@@ -109,11 +109,13 @@ header {
   color: #666;
 }
 
+/* Adjust nav ul for better control over position of elements */
 nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
+  align-items: center;
   gap: 30px;
 }
 
@@ -487,6 +489,25 @@ footer {
   border-radius: 5px;
 }
 
+#customVideoPlayer {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.video-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.control-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
 /* Add this CSS to your existing style.css file */
 
 #embeddedVideoPlayer {
@@ -518,22 +539,65 @@ header.dark-mode, footer.dark-mode, aside.dark-mode, .popup.dark-mode {
   color: #e0e0e0;
 }
 
+nav ul li a.dark-mode, .site-name.dark-mode, .tagline.dark-mode, .resources h2.dark-mode, .popup-content h3.dark-mode {
+  color: #e0e0e0;
+}
+
 button.dark-mode {
   background-color: #1a1919;
   color: #e0e0e0;
 }
 
-/* Mode toggle button */
+/* Adjust the dark mode toggle position */
 .mode-toggle {
   background: none;
   border: none;
   cursor: pointer;
-  position: absolute;
-  top: 20px;
-  left: 20px;
+  font-size: 24px;
+  margin-left: 10px;
 }
 
-.mode-toggle img {
-  width: 30px;
-  height: 30px;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header, footer {
+    flex-direction: column;
+    text-align: center;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .profile button {
+    margin-top: 10px;
+  }
+  main {
+    flex-direction: column;
+  }
+  aside {
+    flex: 0 0 100%;
+    margin: 10px 0;
+    padding: 10px;
+  }
+  .left-aside {
+    margin-right: 0;
+  }
+  .right-aside {
+    margin-left: 0;
+  }
+  .timer-controls {
+    top: 80%;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .timer-display {
+    padding: 20px 40px;
+    font-size: 72px;
+  }
+  .chat-box {
+    width: 90%;
+    height: 60%;
+  }
+  .popup {
+    width: 90%;
+  }
 }

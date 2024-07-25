@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRAP - Collaborative Remote Academic Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Digital+7&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage">
+        <h1>CRAP</h1>
+        <h2>Created by Vaibhav</h2>
+        <img src="https://i.ibb.co/Z69ktJP/Letter-C-Logo-With-Education-and-Book-Concept.png" alt="Logo" class="logo">
+        <div id="loginForm">
+            <h2>Login</h2>
+            <input type="text" id="loginUsername" placeholder="Enter your username">
+            <input type="password" id="loginPassword" placeholder="Enter your password">
+            <button id="loginButton">Login</button>
+            <p id="loginError" class="error-message"></p>
+            <p><a href="#" id="showForgotPassword">Forgot Password?</a></p>
+            <p><a href="#" id="showSignUp">Sign Up</a></p>
+        </div>
+        <div id="signUpForm" style="display:none;">
+            <h2>Sign Up</h2>
+            <input type="text" id="signUpUsername" placeholder="Enter your username">
+            <input type="email" id="signUpEmail" placeholder="Enter your email">
+            <input type="password" id="signUpPassword" placeholder="Enter your password">
+            <button id="signUpButton">Sign Up</button>
+            <p id="signUpError" class="error-message"></p>
+            <p><a href="#" id="showLogin">Already have an account? Login</a></p>
+        </div>
+        <div id="forgotPasswordForm" style="display:none;">
+            <h2>Forgot Password</h2>
+            <input type="email" id="forgotPasswordEmail" placeholder="Enter your email">
+            <button id="sendOTPButton">Send OTP</button>
+            <input type="text" id="otp" placeholder="Enter OTP" style="display:none;">
+            <input type="password" id="newPassword" placeholder="Enter new password" style="display:none;">
+            <button id="resetPasswordButton" style="display:none;">Reset Password</button>
+            <p id="forgotPasswordError" class="error-message"></p>
+            <p><a href="#" id="showLoginFromForgot">Back to Login</a></p>
+        </div>
+    </div>
+
+    <!-- Main Page -->
+    <div id="mainPage" style="display: none;">
+        <header>
+            <div class="logo">
+                <img src="https://i.ibb.co/Z69ktJP/Letter-C-Logo-With-Education-and-Book-Concept.png" alt="Logo">
+                <div class="site-info">
+                    <span class="site-name">CRAP</span>
+                    <span class="tagline">Collaborative Remote Academic Platform</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" id="usersLink">USERS</a></li>
+                    <li><a href="#" id="rewardsLink">REWARDS</a></li>
+                    <li><a href="#" id="aboutLink">ABOUT</a></li>
+                </ul>
+            </nav>
+            <div class="profile">
+                <button id="profileButton">PROFILE</button>
+            </div>
+            <button id="modeToggle" class="mode-toggle">
+                <img id="modeIcon" src="sun-icon.png" alt="Toggle mode">
+            </button>
+        </header>
+        <main>
+            <aside class="left-aside">
+                <div class="resources">
+                    <h2>Resources</h2>
+                    <button id="resourcesButton">Add Resource</button>
+                    <div id="resourceOptions" style="display: none;">
+                        <button id="addMusicButton">Add Music</button>
+                        <button id="addVideoButton">Add Video</button>
+                    </div>
+                    <div id="videoInput" style="display: none;">
+                        <input type="text" id="videoLink" placeholder="Paste video link">
+                        <button id="addVideoLinkButton">Add Video Link</button>
+                        <div id="videoPlayerContainer" style="display: none;">
+                            <iframe id="embeddedVideoPlayer" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+                            <button id="closeVideoButton">Close</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="divider"></div>
+            </aside>
+            <section class="timer-section">
+                <img src="background.jpg" alt="Background" class="background-img">
+                <div class="timer-display" id="timerDisplay">
+                    <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+                </div>
+                <div class="timer-controls">
+                    <button class="play-button">Play</button>
+                    <button class="pause-button">Pause</button>
+                    <button class="reset-button">Reset</button>
+                </div>
+            </section>
+            <aside class="right-aside">
+                <div class="topic-check">
+                    <button id="topicButton">Manage Topics</button>
+                </div>
+                <div class="divider"></div>
+            </aside>
+        </main>
+        <button id="liveChatButton">Live Chat</button>
+        <div id="chatBox" class="chat-box popup">
+            <div class="popup-content">
+                <span class="close-button" onclick="closePopup('chatBox')">&times;</span>
+                <div class="chat-header">
+                    <span>Live Chat</span>
+                </div>
+                <div class="chat-messages">
+                    <!-- Chat messages will appear here -->
+                </div>
+                <input type="text" placeholder="Type a message..." class="chat-input">
+                <button id="sendMessageButton">Send</button>
+            </div>
+        </div>
+        <footer>
+            <section class="controls">
+                <button class="hour-count" id="hourCountButton">HOUR COUNT</button>
+                <button class="notify-break" id="notifyBreakButton">NOTIFY BREAK</button>
+                <button class="streak-button" id="streakButton">STREAK</button>
+            </section>
+        </footer>
+
+        <!-- Pop-up containers -->
+        <div id="usersPopup" class="popup">
+            <div class="popup-content">
+                <span class="close-button" onclick="closePopup('usersPopup')">&times;</span>
+                <h3>Online Users</h3>
+                <ul id="onlineUsersList">
+                    <!-- List of online users will be dynamically added here -->
+                </ul>
+            </div>
+        </div>
+
+        <div id="rewardsPopup" class="popup">
+            <div class="popup-content">
+                <span class="close-button" onclick="closePopup('rewardsPopup')">&times;</span>
+                <h3>Your Rewards</h3>
+                <ul id="userRewardsList">
+                    <!-- List of user rewards will be dynamically added here -->
+                </ul>
+            </div>
+        </div>
+
+        <div id="aboutPopup" class="popup">
+            <div class="popup-content">
+                <span class="close-button" onclick="closePopup('aboutPopup')">&times;</span>
+                <h3>About You</h3>
+                <p id="aboutUserDetails">
+                    <!-- User details will be dynamically added here -->
+                </p>
+            </div>
+        </div>
+
+        <div id="hourCountPopup" class="popup">
+            <div class="popup-content">
+                <span class="close-button" onclick="closePopup('hourCountPopup')">&times;</span>
+                <h3>Online User Timers</h3>
+                <ul id="userTimersList">
+                    <!-- Timers of online users will be dynamically added here -->
+                </ul>
+            </div>
+        </div>
+
+        <div id="notifyBreakPopup" class="popup">
+            <div class="popup-content">
+                <span class="close-button" onclick="closePopup('notifyBreakPopup')">&times;</span>
+                <h3>Notify Break</h3>
+                <button onclick="sendNotification('Going on a Water Break')">Going on a Water Break</button>
+                <button onclick="sendNotification('Going for a Coffee Break')">Going for a Coffee Break</button>
+                <button onclick="sendNotification('Going for a Music Break')">Going for a Music Break</button>
+                <input type="text" id="customMessage" placeholder="Custom Message">
+                <button onclick="sendCustomMessage()">Send</button>
+            </div>
+        </div>
+
+        <div id="streakPopup" class="popup">
+            <div class="popup-content">
+                <span class="close-button" onclick="closePopup('streakPopup')">&times;</span>
+                <h3>Your Streak</h3>
+                <div id="streakCalendar">
+                    <!-- Streak calendar will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+
+        <div id="resourcesPopup" class="popup">
+            <div class="popup-content">
+                <span class="close-button" onclick="closePopup('resourcesPopup')">&times;</span>
+                <h3>Add Resource</h3>
+                <input type="text" id="resourceLink" placeholder="Paste video/music link">
+                <button onclick="addResource()">Add Resource</button>
+                <div id="resourcePlayer" style="display:none;">
+                    <video id="videoPlayer" controls>
+                        <source id="videoSource" src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <div id="profilePopup" class="popup">
+            <div class="popup-content">
+                <span class="close-button" onclick="closePopup('profilePopup')">&times;</span>
+                <h3>Profile</h3>
+                <form id="profileForm">
+                    <label for="profilePicture">Profile Picture:</label>
+                    <input type="file" id="profilePicture" accept="image/*">
+                    <img id="profilePicturePreview" src="#" alt="Profile Picture" style="display:none;">
+                    <label for="totalHours">Total Hours Studied:</label>
+                    <input type="text" id="totalHours" disabled>
+                    <label for="highestStreak">Highest Streak:</label>
+                    <input type="text" id="highestStreak" disabled>
+                    <label for="friends">Friends:</label>
+                    <ul id="friendsList">
+                        <!-- List of friends will be dynamically added here -->
+                    </ul>
+                    <button type="submit">Save</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="topicPopup" class="popup">
+            <div class="popup-content">
+                <span class="close-button" onclick="closePopup('topicPopup')">&times;</span>
+                <h3>Topic Checklist</h3>
+                <input type="text" id="newTopic" placeholder="Add a new topic">
+                <button id="addTopicButton">Add Topic</button>
+                <ul id="toDoList">
+                    <!-- User specific to-do list items will be dynamically added here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

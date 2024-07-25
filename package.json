@@ -1,0 +1,20 @@
+{
+  "name": "study-group",
+  "version": "1.0.0",
+  "description": "Group study app with SQLite",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.14",
+    "socket.io": "^4.0.0",
+    "sqlite3": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

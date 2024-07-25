@@ -158,8 +158,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoLink = document.getElementById('videoLink');
     const addVideoLinkButton = document.getElementById('addVideoLinkButton');
     const videoPlayerContainer = document.getElementById('videoPlayerContainer');
-    const embeddedVideoPlayer = document.getElementById('embeddedVideoPlayer');
+    const customVideoPlayer = document.getElementById('customVideoPlayer');
     const closeVideoButton = document.getElementById('closeVideoButton');
+    const playPauseButton = document.getElementById('playPauseButton');
+    const fullScreenButton = document.getElementById('fullScreenButton');
     const onlineUsersList = document.getElementById('onlineUsersList');
     const sendMessageButton = document.getElementById('sendMessageButton');
     const topicPopup = document.getElementById('topicPopup');
@@ -261,20 +263,36 @@ document.addEventListener('DOMContentLoaded', () => {
     addVideoLinkButton.addEventListener('click', () => {
         const videoLinkValue = videoLink.value.trim();
         if (videoLinkValue) {
-            if (videoLinkValue.includes('youtube.com') || videoLinkValue.includes('youtu.be')) {
-                const videoId = videoLinkValue.split('v=')[1] || videoLinkValue.split('/').pop();
-                const embedLink = `https://www.youtube.com/embed/${videoId}`;
-                embeddedVideoPlayer.src = embedLink;
-                videoPlayerContainer.style.display = 'block';
-            } else {
-                alert('Please enter a valid YouTube link.');
-            }
+            customVideoPlayer.src = videoLinkValue;
+            videoPlayerContainer.style.display = 'block';
         }
     });
 
     closeVideoButton.addEventListener('click', () => {
         videoPlayerContainer.style.display = 'none';
-        embeddedVideoPlayer.src = '';
+        customVideoPlayer.src = '';
+    });
+
+    playPauseButton.addEventListener('click', () => {
+        if (customVideoPlayer.paused) {
+            customVideoPlayer.play();
+            playPauseButton.textContent = '⏸️';
+        } else {
+            customVideoPlayer.pause();
+            playPauseButton.textContent = '⏯️';
+        }
+    });
+
+    fullScreenButton.addEventListener('click', () => {
+        if (customVideoPlayer.requestFullscreen) {
+            customVideoPlayer.requestFullscreen();
+        } else if (customVideoPlayer.mozRequestFullScreen) {
+            customVideoPlayer.mozRequestFullScreen();
+        } else if (customVideoPlayer.webkitRequestFullscreen) {
+            customVideoPlayer.webkitRequestFullscreen();
+        } else if (customVideoPlayer.msRequestFullscreen) {
+            customVideoPlayer.msRequestFullscreen();
+        }
     });
 
     profileButton.addEventListener('click', () => openPopup('profilePopup'));
@@ -370,7 +388,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('header, footer, aside, .popup').forEach(el => {
             el.classList.toggle('dark-mode', mode === 'dark');
         });
-        modeIcon.src = mode === 'dark' ? 'moon-icon.png' : 'sun-icon.png';
+        document.querySelectorAll('nav ul li a, .site-name, .tagline, .resources h2, .popup-content h3').forEach(el => {
+            el.classList.toggle('dark-mode', mode === 'dark');
+        });
+        modeIcon.textContent = mode === 'dark' ? '🌜' : '🌞';
         localStorage.setItem('mode', mode);
     };
 

@@ -1,13 +1,25 @@
+require('dotenv').config();
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const path = require('path');
+const sqlite3 = require('sqlite3').verbose();
 
+// Create and configure the Express app
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
+
+// Connect to the SQLite database
+const db = new sqlite3.Database(process.env.DATABASE_URL, (err) => {
+    if (err) {
+        console.error('Failed to connect to the database:', err.message);
+    } else {
+        console.log('Connected to the SQLite database.');
+    }
+});
 
 app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from the "public" directory
 

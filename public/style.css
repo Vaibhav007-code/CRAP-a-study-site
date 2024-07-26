@@ -638,7 +638,8 @@ button.dark-mode {
     display: flex;
     flex-direction: row;
     gap: 5px; /* Reduced gap */
-    margin-top: 10px;
+    margin-top: 0px; /* Remove top margin */
+    justify-content: center; /* Center align controls */
   }
 
   .timer-controls button {
@@ -654,34 +655,33 @@ button.dark-mode {
   /* Middle block */
   .middle-block {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 10px; /* Gap between elements */
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    border-radius: 15px;
+    width: 100%;
+    padding: 10px 0; /* No side padding */
     margin: 20px 0; /* Margin for spacing */
   }
 
   .middle-block .option {
-    background: none; /* Remove background */
-    padding: 0; /* Remove padding */
-    border: none; /* Remove border */
     font-size: 14px; /* Adjust font size if needed */
     cursor: pointer;
+    background: none; /* Remove background */
+    padding: 10px 20px;
+    border: none; /* Remove border */
+    border-radius: 15px; /* Rounded corners */
+    background-color: #000; /* Black background */
+    color: #fff; /* White text */
+    text-align: center; /* Center align text */
   }
 
   .middle-block .timer-controls {
     display: flex;
-    gap: 5px; /* Gap between control buttons */
-    margin-left: 10px; /* Space between timer and controls */
+    gap: 0; /* Remove gap between control buttons */
   }
 
   .middle-block .timer-controls button {
     position: relative;
-    top: 50%; /* Adjust vertical alignment */
-    transform: translateY(-50%);
+    margin-top: 0; /* Remove top margin */
   }
 
   /* Footer adjustments */

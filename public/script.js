@@ -28,6 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentUser = '';
 
+    // Alert for mobile users on login page
+    if (window.innerWidth < 768) {
+        alert('Please open the site in desktop mode for a better experience.');
+    }
+
     loginButton.addEventListener('click', () => {
         const username = loginUsernameInput.value.trim();
         const password = loginPasswordInput.value.trim();
@@ -183,19 +188,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startTimer() {
-        timerInterval = setInterval(() => {
-            timer++;
-            updateTimerDisplay();
-            socket.emit('updateTimer', { username: currentUser, timer });
-        }, 1000);
+        if (!timerInterval) {
+            timerInterval = setInterval(() => {
+                timer++;
+                updateTimerDisplay();
+                socket.emit('updateTimer', { username: currentUser, timer });
+            }, 1000);
+        }
     }
 
     function pauseTimer() {
         clearInterval(timerInterval);
+        timerInterval = null;
     }
 
     function resetTimer() {
         clearInterval(timerInterval);
+        timerInterval = null;
         timer = 0;
         updateTimerDisplay();
     }
@@ -265,6 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (videoLinkValue) {
             customVideoPlayer.src = videoLinkValue;
             videoPlayerContainer.style.display = 'block';
+            customVideoPlayer.play(); // Play video automatically
         }
     });
 

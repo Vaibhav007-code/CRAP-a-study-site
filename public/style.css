@@ -559,51 +559,6 @@ button.dark-mode {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  header, footer {
-    flex-direction: column;
-    text-align: center;
-  }
-  nav ul {
-    flex-direction: column;
-    gap: 15px;
-  }
-  .profile button {
-    margin-top: 10px;
-  }
-  main {
-    flex-direction: column;
-  }
-  aside {
-    flex: 0 0 100%;
-    margin: 10px 0;
-    padding: 10px;
-  }
-  .left-aside {
-    margin-right: 0;
-  }
-  .right-aside {
-    margin-left: 0;
-  }
-  .timer-controls {
-    top: 80%;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .timer-display {
-    padding: 20px 40px;
-    font-size: 72px;
-  }
-  .chat-box {
-    width: 90%;
-    height: 60%;
-  }
-  .popup {
-    width: 90%;
-  }
-}
-
-/* Adjustments for mobile screens */
-@media (max-width: 768px) {
   /* Ensure the heading remains on top */
   header {
     position: fixed;
@@ -614,7 +569,7 @@ button.dark-mode {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 5px 10px; /* Reduced padding */
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
@@ -625,7 +580,7 @@ button.dark-mode {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 
   .header-content h1 {
@@ -641,22 +596,23 @@ button.dark-mode {
   .header-options {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 5px; /* Reduced gap */
+    flex-wrap: wrap;
   }
 
   .header-options button {
     background-color: #0C8FCB;
     color: white;
     border: none;
-    padding: 5px 10px;
-    border-radius: 15px;
+    padding: 5px 8px; /* Reduced padding */
+    border-radius: 12px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 10px; /* Reduced font size */
   }
 
   /* Main section adjustments */
   main {
-    margin-top: 150px; /* Space for fixed header */
+    margin-top: 120px; /* Space for fixed header */
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -668,7 +624,7 @@ button.dark-mode {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   .timer-display {

@@ -616,30 +616,22 @@ button.dark-mode {
 
   .main-content {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 0 10px;
   }
 
-  .timer-container {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Gap between timer and options */
+  .option {
+    font-size: 14px;
+    margin: 0 10px;
   }
 
   .timer-display {
     font-size: 40px; /* Reduced font size */
     padding: 10px 20px; /* Reduced padding */
     background: linear-gradient(45deg, #ff8c00, #ff0080);
-  }
-
-  .option {
-    font-size: 14px;
-    margin: 0;
-    padding: 0;
-    background: none; /* Remove background block */
-    border: none; /* Remove border */
+    margin: 0 10px;
   }
 
   .timer-controls {
@@ -647,9 +639,6 @@ button.dark-mode {
     flex-direction: row;
     gap: 5px; /* Reduced gap */
     margin-top: 10px;
-    position: relative;
-    top: 50%; /* Half inside, half outside the timer block */
-    transform: translateY(-50%);
   }
 
   .timer-controls button {
@@ -660,6 +649,39 @@ button.dark-mode {
     border-radius: 12px;
     cursor: pointer;
     font-size: 12px; /* Reduced font size */
+  }
+
+  /* Middle block */
+  .middle-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Gap between elements */
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 15px;
+    margin: 20px 0; /* Margin for spacing */
+  }
+
+  .middle-block .option {
+    background: none; /* Remove background */
+    padding: 0; /* Remove padding */
+    border: none; /* Remove border */
+    font-size: 14px; /* Adjust font size if needed */
+    cursor: pointer;
+  }
+
+  .middle-block .timer-controls {
+    display: flex;
+    gap: 5px; /* Gap between control buttons */
+    margin-left: 10px; /* Space between timer and controls */
+  }
+
+  .middle-block .timer-controls button {
+    position: relative;
+    top: 50%; /* Adjust vertical alignment */
+    transform: translateY(-50%);
   }
 
   /* Footer adjustments */

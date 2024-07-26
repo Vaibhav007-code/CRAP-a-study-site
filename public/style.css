@@ -667,8 +667,6 @@ button.dark-mode {
     flex-direction: row;
     gap: 10px;
     margin-top: 10px;
-    position: relative;
-    top: 10px; /* Adjust this value to control the distance from the timer box */
   }
 
   .timer-controls button {
@@ -679,12 +677,6 @@ button.dark-mode {
     border-radius: 12px;
     cursor: pointer;
     font-size: 14px;
-  }
-
-  .timer-section .resources, .timer-section .topic-check {
-    display: block;
-    text-align: center;
-    width: 100%;
   }
 
   .resources, .topic-check {
@@ -738,4 +730,27 @@ button.dark-mode {
     cursor: pointer;
     font-size: 12px; /* Match font size with other buttons */
   }
+}
+
+/* Styles for the options after the timer controls */
+.resources, .topic-check {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.resources, .topic-check {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.resources h2, .topic-check h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.timer-section .resources, .timer-section .topic-check {
+  display: block;
+  text-align: center;
+  width: 100%;
 }

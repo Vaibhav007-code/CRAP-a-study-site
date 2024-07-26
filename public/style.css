@@ -601,3 +601,10 @@ button.dark-mode {
     width: 90%;
   }
 }
+
+/* Adjustments for mobile screens */
+@media (max-width: 768px) {
+  .timer-controls {
+    top: calc(50% + 200px); /* Move timer slightly down */
+  }
+}

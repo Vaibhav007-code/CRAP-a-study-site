@@ -622,6 +622,13 @@ button.dark-mode {
     margin-top: 20px;
   }
 
+  .timer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Small gap between timer and side sections */
+  }
+
   .timer-display {
     font-size: 40px; /* Reduced font size */
     padding: 10px 20px; /* Reduced padding */

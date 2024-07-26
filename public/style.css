@@ -612,12 +612,12 @@ button.dark-mode {
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative; /* Added position relative */
+    position: relative;
   }
 
   .main-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
     padding: 0 10px;
@@ -628,9 +628,8 @@ button.dark-mode {
     margin: 0 10px;
   }
 
-  /* Position elements absolutely within the main content */
+  /* Position elements within the main content */
   .add-resources, .timer-display, .manage-topics {
-    position: absolute;
     background-color: #000;
     color: #fff;
     padding: 10px;
@@ -638,34 +637,19 @@ button.dark-mode {
     text-align: center;
   }
 
-  .add-resources {
-    left: 10%;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .timer-display {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .manage-topics {
-    right: 10%;
-    top: 50%;
-    transform: translateY(-50%);
+  .main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 10px;
+    gap: 20px; /* Add gap between elements */
   }
 
   .timer-controls {
     display: flex;
-    flex-direction: row;
-    gap: 5px; /* Reduced gap */
-    margin-top: 0px; /* Remove top margin */
-    justify-content: center; /* Center align controls */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, calc(-50% + 50px)); /* Adjust the vertical position */
+    gap: 5px; /* Gap between control buttons */
+    margin-top: 10px; /* Space above control buttons */
   }
 
   .timer-controls button {

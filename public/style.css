@@ -612,6 +612,7 @@ button.dark-mode {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative; /* Added position relative */
   }
 
   .main-content {
@@ -627,11 +628,32 @@ button.dark-mode {
     margin: 0 10px;
   }
 
+  /* Position elements absolutely within the main content */
+  .add-resources, .timer-display, .manage-topics {
+    position: absolute;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: center;
+  }
+
+  .add-resources {
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
   .timer-display {
-    font-size: 40px; /* Reduced font size */
-    padding: 10px 20px; /* Reduced padding */
-    background: linear-gradient(45deg, #ff8c00, #ff0080);
-    margin: 0 10px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .manage-topics {
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .timer-controls {
@@ -640,6 +662,10 @@ button.dark-mode {
     gap: 5px; /* Reduced gap */
     margin-top: 0px; /* Remove top margin */
     justify-content: center; /* Center align controls */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc(-50% + 50px)); /* Adjust the vertical position */
   }
 
   .timer-controls button {
@@ -650,38 +676,6 @@ button.dark-mode {
     border-radius: 12px;
     cursor: pointer;
     font-size: 12px; /* Reduced font size */
-  }
-
-  /* Middle block */
-  .middle-block {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 10px 0; /* No side padding */
-    margin: 20px 0; /* Margin for spacing */
-  }
-
-  .middle-block .option {
-    font-size: 14px; /* Adjust font size if needed */
-    cursor: pointer;
-    background: none; /* Remove background */
-    padding: 10px 20px;
-    border: none; /* Remove border */
-    border-radius: 15px; /* Rounded corners */
-    background-color: #000; /* Black background */
-    color: #fff; /* White text */
-    text-align: center; /* Center align text */
-  }
-
-  .middle-block .timer-controls {
-    display: flex;
-    gap: 0; /* Remove gap between control buttons */
-  }
-
-  .middle-block .timer-controls button {
-    position: relative;
-    margin-top: 0; /* Remove top margin */
   }
 
   /* Footer adjustments */

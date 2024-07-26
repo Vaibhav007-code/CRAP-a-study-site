@@ -611,39 +611,54 @@ button.dark-mode {
     left: 0;
     right: 0;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding: 10px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
   }
 
-  .logo img {
-    width: 40px;
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
   }
 
-  /* Adjust navigation options in the header */
-  nav ul {
-    flex-direction: row;
-    gap: 10px;
+  .header-content h1 {
+    font-size: 24px;
     margin: 0;
   }
 
-  .profile button {
+  .header-content h2 {
+    font-size: 14px;
+    margin: 5px 0 10px;
+  }
+
+  .header-options {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .header-options button {
     background-color: #0C8FCB;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
+    padding: 5px 10px;
+    border-radius: 15px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 12px;
   }
 
   /* Main section adjustments */
   main {
-    margin-top: 80px; /* Space for fixed header */
+    margin-top: 150px; /* Space for fixed header */
     padding: 10px;
+    display: flex;
     flex-direction: column;
     align-items: center;
   }
@@ -657,8 +672,8 @@ button.dark-mode {
   }
 
   .timer-display {
-    font-size: 60px;
-    padding: 20px 40px;
+    font-size: 40px; /* Reduced font size */
+    padding: 10px 20px; /* Reduced padding */
     background: linear-gradient(45deg, #ff8c00, #ff0080);
   }
 
@@ -667,28 +682,38 @@ button.dark-mode {
     flex-direction: row;
     gap: 10px;
     margin-top: 10px;
+    justify-content: center;
   }
 
   .timer-controls button {
     background-color: #C165DD;
     color: white;
     border: none;
-    padding: 8px 15px;
+    padding: 5px 10px; /* Reduced padding */
     border-radius: 12px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px; /* Reduced font size */
+  }
+
+  .side-sections {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    padding: 0 10px;
   }
 
   .resources, .topic-check {
-    font-size: 16px;
-    margin-top: 20px;
+    font-size: 14px;
+    width: 48%; /* Ensure they take equal width and fit beside each other */
   }
 
   .resources h2, .topic-check h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-size: 16px;
+    margin-bottom: 5px;
   }
 
+  /* Footer adjustments */
   .footer {
     position: fixed;
     bottom: 0;
@@ -700,7 +725,6 @@ button.dark-mode {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
     text-align: center;
     z-index: 1000;
   }
@@ -730,27 +754,4 @@ button.dark-mode {
     cursor: pointer;
     font-size: 12px; /* Match font size with other buttons */
   }
-}
-
-/* Styles for the options after the timer controls */
-.resources, .topic-check {
-  display: block;
-  text-align: center;
-  width: 100%;
-}
-
-.resources, .topic-check {
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-.resources h2, .topic-check h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.timer-section .resources, .timer-section .topic-check {
-  display: block;
-  text-align: center;
-  width: 100%;
 }

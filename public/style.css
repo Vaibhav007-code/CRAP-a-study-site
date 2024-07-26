@@ -667,6 +667,8 @@ button.dark-mode {
     flex-direction: row;
     gap: 10px;
     margin-top: 10px;
+    position: relative;
+    top: 10px; /* Adjust this value to control the distance from the timer box */
   }
 
   .timer-controls button {
@@ -714,27 +716,26 @@ button.dark-mode {
   .footer .controls {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 5px; /* Reduce the gap between buttons */
   }
 
   .footer .controls button {
     background-color: #0072ff;
     color: white;
     border: none;
-    padding: 8px 15px;
-    border-radius: 25px;
+    padding: 5px 10px; /* Reduce button padding */
+    border-radius: 15px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px; /* Reduce button font size */
   }
 
   .footer .live-chat {
     background-color: #0C8FCB;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
+    padding: 5px 10px; /* Match padding with other buttons */
+    border-radius: 15px; /* Match border radius with other buttons */
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px; /* Match font size with other buttons */
   }
 }
-

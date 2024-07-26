@@ -604,12 +604,23 @@ button.dark-mode {
 
 /* Adjustments for mobile screens */
 @media (max-width: 768px) {
+  .timer-section {
+    position: relative; /* Ensure the timer section is relative */
+    height: 100vh; /* Make sure it takes the full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center the content vertically */
+  }
+
+  .timer-display {
+    position: relative; /* Adjust position relative to its container */
+    top: auto; /* Reset top positioning */
+    transform: none; /* Reset any previous transforms */
+  }
+
   .timer-controls {
-    position: absolute;
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Center both vertically and horizontally */
-    flex-direction: column;
-    gap: 10px;
+    position: relative;
+    margin-top: 20px; /* Adjust if needed */
   }
 }
+

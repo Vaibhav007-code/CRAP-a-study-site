@@ -605,12 +605,15 @@ button.dark-mode {
 /* Adjustments for mobile screens */
 @media (max-width: 768px) {
   .timer-section {
-    position: relative; /* Ensure the timer section is relative */
-    height: 100vh; /* Make sure it takes the full viewport height */
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Center the content vertically */
-  }
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh; /* Ensure it takes the full viewport height */
+  justify-content: center; /* Center content vertically */
+  padding-top: 50px; /* Add padding to move content down */
+}
 
   .timer-display {
     position: relative; /* Adjust position relative to its container */

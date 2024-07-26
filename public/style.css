@@ -631,9 +631,7 @@ button.dark-mode {
   /* Position elements within the main content */
   .add-resources, .timer-display, .manage-topics {
     background-color: #000;
-    color: #fff;
-    padding: 10px;
-    border-radius: 15px;
+    color: #ffff
     text-align: center;
   }
 

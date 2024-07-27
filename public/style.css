@@ -633,12 +633,21 @@ button.dark-mode {
   }
 
   /* Position elements within the main content */
-  .add-resources, .timer-display, .manage-topics {
+  .add-resources, .manage-topics {
     background-color: #000;
     color: #fff;
     text-align: center;
-    width: 100px; /* Set width to make it square */
-    height: 100px; /* Set height to make it square */
+    width: 80px; /* Reduced width */
+    height: 80px; /* Reduced height */
+    margin: 5px; /* Add margin for spacing */
+  }
+
+  .timer-display {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    width: 100px; /* Original width */
+    height: 100px; /* Original height */
     margin: 5px; /* Add margin for spacing */
   }
 

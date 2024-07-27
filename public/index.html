@@ -78,20 +78,22 @@
                         <button id="addMusicButton">Add Music</button>
                         <button id="addVideoButton">Add Video</button>
                     </div>
-                     <div id="resourcesPopup" class="popup">
-            <div class="popup-content">
-                <span class="close-button" onclick="closePopup('resourcesPopup')">&times;</span>
-                <h3>Add Resource</h3>
-                <input type="text" id="resourceLink" placeholder="Paste video/music link">
-                <button onclick="addResource()">Add Resource</button>
-                <div id="resourcePlayer" style="display:none;">
-                    <video id="videoPlayer" controls>
-                        <source id="videoSource" src="" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                     <div id="videoInput" style="display: none;">
+                        <input type="text" id="videoLink" placeholder="Paste video link">
+                        <button id="addVideoLinkButton">Add Video Link</button>
+                        <div id="videoPlayerContainer" style="display: none;">
+                            <video id="customVideoPlayer" controls>
+                                <source id="videoSource" src="" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="video-controls">
+                                <button id="playPauseButton" class="control-button">⏯️</button>
+                                <button id="fullScreenButton" class="control-button">⛶</button>
+                                <button id="closeVideoButton" class="control-button">❌</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
                 <div class="divider"></div>
             </aside>
             <section class="timer-section">

@@ -556,6 +556,42 @@ button.dark-mode {
   font-size: 24px;
   margin-left: 10px;
 }
+/* Existing styles... */
+
+/* Chat box size fix */
+#chatBox {
+    width: 400px;
+    height: 500px;
+}
+
+/* Slider for chat box */
+.chat-messages {
+    overflow-y: scroll;
+    gap: 10px; /* Increase gaps between messages */
+}
+
+/* Typing indicator */
+.typing-indicator {
+    font-style: italic;
+    color: gray;
+}
+
+/* Close button for resource popup */
+.close-button {
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.close-button:hover {
+    background-color: #ff4c3b;
+}
+
+/* Existing styles... */
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

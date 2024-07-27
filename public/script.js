@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentUser = '';
 
-    // Alert for mobile users on login page
     if (window.innerWidth < 768) {
         alert('Please open the site in desktop mode for a better experience.');
     }
@@ -82,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const otp = Math.floor(100000 + Math.random() * 900000);
             users[userName].otp = otp;
             saveUsers();
-            // This would actually be sent from the server
             console.log(`OTP for ${email}: ${otp}`);
             forgotPasswordError.textContent = 'OTP sent to your email';
             otpInput.style.display = 'block';
@@ -174,6 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newTopicInput = document.getElementById('newTopic');
     const addTopicButton = document.getElementById('addTopicButton');
     const topicButton = document.getElementById('topicButton');
+    const typingIndicator = document.getElementById('typingIndicator');
 
     let timerInterval;
     let timer = 0;
@@ -227,7 +226,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (message) {
                 socket.emit('chatMessage', { username: currentUser, message });
                 chatInput.value = '';
+                typingIndicator.style.display = 'none';
             }
+        } else {
+            socket.emit('typing', { username: currentUser });
         }
     });
 
@@ -246,6 +248,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function closePopup(popupId) {
         document.getElementById(popupId).style.display = 'none';
     }
+
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.popup') && !event.target.closest('#resourcesButton')) {
+            closePopup('resourceOptions');
+        }
+    });
 
     usersLink.addEventListener('click', () => {
         socket.emit('requestOnlineUsers');
@@ -274,7 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (videoLinkValue) {
             customVideoPlayer.src = videoLinkValue;
             videoPlayerContainer.style.display = 'block';
-            customVideoPlayer.play(); // Play video automatically
+            customVideoPlayer.play();
         }
     });
 
@@ -365,8 +373,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     socket.on('chatMessage', (data) => {
         const messageElement = document.createElement('div');
-        messageElement.textContent = `${data.username}: ${data.message}`;
+        messageElement.classList.add('chat-message');
+        messageElement.innerHTML = `<span>${data.username}: ${data.message}</span><time>${new Date().toLocaleTimeString()}</time>`;
         document.querySelector('.chat-messages').appendChild(messageElement);
+        // Scroll to the bottom when a new message is received
+        document.querySelector('.chat-messages').scrollTop = document.querySelector('.chat-messages').scrollHeight;
+    });
+
+    socket.on('typing', (data) => {
+        typingIndicator.style.display = 'block';
+        setTimeout(() => {
+            typingIndicator.style.display = 'none';
+        }, 1000);
     });
 
     socket.on('receiveNotification', (data) => {
@@ -384,11 +402,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.viewProfile = (username) => {
-        // Fetch and display the profile details of the user
         alert(`Viewing profile of ${username}`);
     };
 
-    // Dark mode functionality
     const modeToggle = document.getElementById('modeToggle');
     const modeIcon = document.getElementById('modeIcon');
     const currentMode = localStorage.getItem('mode') || 'light';

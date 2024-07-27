@@ -562,24 +562,6 @@ button.dark-mode {
   background-color: #1a1919;
   color: #e0e0e0;
 }
-
-/* Adjust the dark mode toggle position */
-.mode-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 24px;
-  margin-left: 10px;
-}
-/* Existing styles... */
-
-/* Chat box size fix */
-.chat-messages {
-  height: 300px;
-  overflow-y: auto;
-}
-
-/* Responsive adjustments */
 @media (max-width: 768px) {
   /* Ensure the heading remains on top */
   header {
@@ -607,6 +589,11 @@ button.dark-mode {
 
   .header-content h1 {
     font-size: 24px;
+    margin: 0;
+  }
+
+  .header-content h2 {
+    font-size: 16px;
     margin: 0;
   }
 
@@ -643,6 +630,7 @@ button.dark-mode {
     align-items: center;
     width: 100%;
     padding: 0 10px;
+    gap: 20px; /* Add gap between elements */
   }
 
   .option {
@@ -652,18 +640,10 @@ button.dark-mode {
 
   /* Position elements within the main content */
   .add-resources, .timer-display, .manage-topics {
-    background-color: #000;
-    color: #ffff
+    background-color: transparent; /* Remove block background */
+    color: #000;
     text-align: center;
-  }
-
-  .main-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 0 10px;
-    gap: 20px; /* Add gap between elements */
+    margin: 0 10px; /* Add margin to space out elements */
   }
 
   .timer-controls {
@@ -723,4 +703,126 @@ button.dark-mode {
     cursor: pointer;
     font-size: 12px; /* Match font size with other buttons */
   }
+}
+
+/* General styles for larger screens */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.header-content h1 {
+  font-size: 32px;
+  margin: 0;
+}
+
+.header-content h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.header-options {
+  display: flex;
+  gap: 10px;
+}
+
+.header-options button {
+  background-color: #0C8FCB;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+main {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+  gap: 20px;
+}
+
+.add-resources, .timer-display, .manage-topics {
+  background-color: transparent; /* Remove block background */
+  color: #000;
+  text-align: center;
+  margin: 0 10px; /* Add margin to space out elements */
+}
+
+.timer-controls {
+  display: flex;
+  gap: 5px; /* Gap between control buttons */
+  margin-top: 10px; /* Space above control buttons */
+}
+
+.timer-controls button {
+  background-color: #C165DD;
+  color: white;
+  border: none;
+  padding: 5px 10px; /* Reduced padding */
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 12px; /* Reduced font size */
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  z-index: 1000;
+}
+
+.footer .controls {
+  display: flex;
+  flex-direction: row;
+  gap: 5px; /* Reduce the gap between buttons */
+}
+
+.footer .controls button {
+  background-color: #0072ff;
+  color: white;
+  border: none;
+  padding: 5px 10px; /* Reduce button padding */
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 12px; /* Reduce button font size */
+}
+
+.footer .live-chat {
+  background-color: #0C8FCB;
+  color: white;
+  border: none;
+  padding: 5px 10px; /* Match padding with other buttons */
+  border-radius: 15px; /* Match border radius with other buttons */
+  cursor: pointer;
+  font-size: 12px; /* Match font size with other buttons */
 }

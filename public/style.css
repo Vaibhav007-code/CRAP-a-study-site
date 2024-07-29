@@ -570,17 +570,24 @@ body {
 
 header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     background-color: #4A3F99;
     color: white;
-    padding: 10px;
+    padding: 5px 10px;
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 50px; /* Reduced size */
 }
 
 .logo img {
-    width: 50px;
-    height: 50px;
+    width: 40px; /* Reduced size */
+    height: 40px; /* Reduced size */
 }
 
 .site-info {
@@ -588,16 +595,16 @@ header {
 }
 
 .site-name {
-    font-size: 18px;
+    font-size: 14px; /* Reduced size */
     font-weight: bold;
 }
 
 .tagline {
-    font-size: 12px;
+    font-size: 10px; /* Reduced size */
 }
 
 nav {
-    margin-top: 10px;
+    margin-top: 0;
 }
 
 nav ul {
@@ -608,19 +615,19 @@ nav ul {
 }
 
 nav ul li {
-    margin: 0 10px;
+    margin: 0 5px; /* Reduced margin */
 }
 
 nav ul li a,
 .mode-toggle {
     color: white;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 12px; /* Reduced size */
 }
 
 .profile {
     position: absolute;
-    top: 10px;
+    top: 5px; /* Adjusted position */
     right: 10px;
 }
 
@@ -639,14 +646,14 @@ main {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    margin-top: 60px;
+    margin-top: 60px; /* Adjusted for fixed header */
 }
 
 .timer-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 20px; /* Adjusted margin */
     width: 100%;
 }
 
@@ -669,35 +676,22 @@ main {
 .manage-topics {
     color: white;
     text-align: center;
-    width: 120px;
-    height: 50px;
+    width: 100px; /* Reduced size */
+    height: 40px; /* Reduced size */
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 15px;
     cursor: pointer;
     font-size: 12px;
-    position: absolute; /* Use absolute positioning */
-}
-
-/* Position the Add Resources button to the left */
-.add-resources {
-    left: 10px; /* Adjust as needed */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Center vertically */
-}
-
-/* Position the Manage Topics button to the right */
-.manage-topics {
-    right: 10px; /* Adjust as needed */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Center vertically */
+    position: relative; /* Changed to relative */
+    margin: 10px; /* Added margin */
 }
 
 .timer-controls {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px; /* Adjusted margin */
 }
 
 .timer-controls button {
@@ -717,21 +711,21 @@ footer {
     align-items: center;
     background-color: #4A3F99;
     color: white;
-    padding: 10px;
+    padding: 5px; /* Reduced padding */
     width: 100%;
     position: fixed;
     bottom: 0;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* No wrapping */
 }
 
 footer button {
     background-color: #0C8FCB;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 5px 10px; /* Reduced padding */
     border-radius: 15px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 10px; /* Reduced size */
     margin: 5px;
 }
 
@@ -739,32 +733,38 @@ footer button {
     background-color: #0C8FCB;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 5px 10px; /* Reduced padding */
     border-radius: 15px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 10px; /* Reduced size */
     margin: 5px;
 }
 
 @media (max-width: 768px) {
   header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
+    height: 50px; /* Reduced size */
   }
 
   main {
-    margin-top: 120px;
+    margin-top: 70px; /* Adjusted for fixed header */
   }
 
-  .timer-controls button {
-    padding: 10px 20px;
+  .timer-container {
+    flex-direction: column;
+  }
+
+  .timer-controls {
+    margin-top: 10px; /* Adjusted margin */
+  }
+
+  .add-resources,
+  .manage-topics {
+    position: relative; /* Changed to relative */
+    margin: 10px; /* Added margin */
   }
 
   footer {
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* No wrapping */
   }
 }

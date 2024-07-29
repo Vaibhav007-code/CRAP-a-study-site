@@ -563,72 +563,68 @@ button.dark-mode {
   color: #e0e0e0;
 }
 @media (max-width: 768px) {
-  body {
+ body {
     margin: 0;
-    padding: 0;
     font-family: 'Montserrat', sans-serif;
-  }
+}
 
-  header {
+header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
     background-color: #4A3F99;
     color: white;
-  }
+    padding: 10px;
+    width: 100%;
+}
 
-  .logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .logo img {
+.logo img {
     width: 50px;
     height: 50px;
-  }
+}
 
-  .site-info {
+.site-info {
     text-align: center;
-  }
+}
 
-  .site-name {
+.site-name {
     font-size: 18px;
     font-weight: bold;
-  }
+}
 
-  .tagline {
+.tagline {
     font-size: 12px;
-  }
+}
 
-  nav {
+nav {
     margin-top: 10px;
-  }
+}
 
-  nav ul {
+nav ul {
     display: flex;
     justify-content: center;
     padding: 0;
     list-style: none;
-  }
+}
 
-  nav ul li {
+nav ul li {
     margin: 0 10px;
-  }
+}
 
-  nav ul li a,
-  .mode-toggle {
+nav ul li a,
+.mode-toggle {
     color: white;
     text-decoration: none;
     font-size: 14px;
-  }
+}
 
-  .profile {
-    margin-top: 10px;
-  }
+.profile {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
 
-  #profileButton {
+#profileButton {
     background-color: #0C8FCB;
     color: white;
     border: none;
@@ -636,61 +632,65 @@ button.dark-mode {
     border-radius: 15px;
     cursor: pointer;
     font-size: 12px;
-  }
+}
 
-  main {
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
-  }
+    padding: 20px;
+    margin-top: 60px;
+}
 
-  .timer-display {
+.timer-display {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #000;
     color: #fff;
-    width: 120px;
-    height: 60px;
+    width: 200px;
+    height: 100px;
     font-family: 'Digital-7', sans-serif;
-    font-size: 24px;
-    margin-top: 20px;
-  }
+    font-size: 36px;
+    margin-top: 40px;
+    border: 2px solid #00F0FF;
+    border-radius: 10px;
+}
 
-  .timer-controls {
+.timer-controls {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
-  }
+    margin-top: 20px;
+}
 
-  .timer-controls button {
+.timer-controls button {
     background-color: #0C8FCB;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 10px 20px;
     border-radius: 15px;
     cursor: pointer;
-    font-size: 12px;
-    margin: 0 5px;
-  }
+    font-size: 14px;
+    margin: 0 10px;
+}
 
-  .add-resources,
-  .manage-topics {
+.add-resources,
+.manage-topics {
     background-color: #4A3F99;
     color: white;
     text-align: center;
-    width: 120px;
+    width: 140px;
     height: 60px;
-    margin: 10px 0;
+    margin: 20px 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 15px;
     cursor: pointer;
-  }
+    font-size: 14px;
+}
 
-  footer {
+footer {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -700,25 +700,42 @@ button.dark-mode {
     width: 100%;
     position: fixed;
     bottom: 0;
-  }
+}
 
-  footer button {
+footer button {
     background-color: #0C8FCB;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 10px 20px;
     border-radius: 15px;
     cursor: pointer;
-    font-size: 12px;
-  }
+    font-size: 14px;
+}
 
-  #liveChatButton {
+#liveChatButton {
     background-color: #0C8FCB;
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 10px 20px;
     border-radius: 15px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  main {
+    margin-top: 120px;
+  }
+
+  .timer-controls button {
+    padding: 10px 20px;
   }
 }

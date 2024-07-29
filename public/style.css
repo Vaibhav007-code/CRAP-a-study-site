@@ -642,17 +642,23 @@ main {
     margin-top: 60px;
 }
 
+.timer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
 .timer-display {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #000;
     color: #fff;
-    width: 200px;
-    height: 100px;
+    width: 160px;
+    height: 80px;
     font-family: 'Digital-7', sans-serif;
-    font-size: 36px;
-    margin-top: 40px;
+    font-size: 28px;
     border: 2px solid #00F0FF;
     border-radius: 10px;
 }
@@ -679,15 +685,15 @@ main {
     background-color: #4A3F99;
     color: white;
     text-align: center;
-    width: 140px;
-    height: 60px;
-    margin: 20px 10px;
+    width: 120px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 15px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px;
+    margin: 0 10px;
 }
 
 footer {

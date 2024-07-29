@@ -667,7 +667,6 @@ main {
 
 .add-resources,
 .manage-topics {
-    background-color: #4A3F99;
     color: white;
     text-align: center;
     width: 120px;
@@ -678,7 +677,21 @@ main {
     border-radius: 15px;
     cursor: pointer;
     font-size: 12px;
-    margin: 0 10px;
+    position: absolute; /* Use absolute positioning */
+}
+
+/* Position the Add Resources button to the left */
+.add-resources {
+    left: 10px; /* Adjust as needed */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Center vertically */
+}
+
+/* Position the Manage Topics button to the right */
+.manage-topics {
+    right: 10px; /* Adjust as needed */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Center vertically */
 }
 
 .timer-controls {

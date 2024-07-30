@@ -38,10 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (users[username] && users[username].password === password) {
             loginPage.style.display = 'none';
             mainPage.style.display = 'block';
-            socket.emit('userLogin', { username });
+            socket.emit('userLogin', { username, profilePicture: users[username].profilePicture });
             currentUser = username;
             localStorage.setItem('currentUser', username);
             document.getElementById('welcomeMessage').textContent = `Logged in as ${username}`;
+            if (users[username].profilePicture) {
+                document.getElementById('profilePicturePreview').src = users[username].profilePicture;
+                document.getElementById('profilePicturePreview').style.display = 'block';
+            }
         } else {
             loginError.textContent = 'Invalid username or password';
         }
@@ -53,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = signUpPasswordInput.value.trim();
         if (username && email && password) {
             if (!users[username]) {
-                users[username] = { email, password };
+                users[username] = { email, password, profilePicture: '' };
                 saveUsers();
                 signUpError.textContent = 'Sign up successful. Please login.';
                 signUpForm.style.display = 'none';
@@ -280,37 +284,39 @@ document.addEventListener('DOMContentLoaded', () => {
     addVideoLinkButton.addEventListener('click', () => {
         const videoLinkValue = videoLink.value.trim();
         if (videoLinkValue) {
-            customVideoPlayer.src = videoLinkValue;
-            videoPlayerContainer.style.display = 'block';
-            customVideoPlayer.play();
+            const videoId = getYouTubeVideoId(videoLinkValue);
+            if (videoId) {
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://www.youtube.com/embed/${videoId}`;
+                iframe.width = '100%';
+                iframe.height = '315';
+                iframe.frameBorder = '0';
+                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                iframe.allowFullscreen = true;
+                videoPlayerContainer.innerHTML = '';
+                videoPlayerContainer.appendChild(iframe);
+                videoPlayerContainer.style.display = 'block';
+                customVideoPlayer.style.display = 'none'; // Hide the custom video player
+            } else {
+                alert('Invalid YouTube link');
+            }
         }
     });
 
     closeVideoButton.addEventListener('click', () => {
         videoPlayerContainer.style.display = 'none';
-        customVideoPlayer.src = '';
+        videoPlayerContainer.innerHTML = '';
+        customVideoPlayer.style.display = 'block'; // Show the custom video player
     });
+    function getYouTubeVideoId(url) {
+        const regex = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+        const match = url.match(regex);
+        return match ? match[1] : null;
+    }
 
-    playPauseButton.addEventListener('click', () => {
-        if (customVideoPlayer.paused) {
-            customVideoPlayer.play();
-            playPauseButton.textContent = '⏸️';
-        } else {
-            customVideoPlayer.pause();
-            playPauseButton.textContent = '⏯️';
-        }
-    });
-
-    fullScreenButton.addEventListener('click', () => {
-        if (customVideoPlayer.requestFullscreen) {
-            customVideoPlayer.requestFullscreen();
-        } else if (customVideoPlayer.mozRequestFullScreen) {
-            customVideoPlayer.mozRequestFullScreen();
-        } else if (customVideoPlayer.webkitRequestFullscreen) {
-            customVideoPlayer.webkitRequestFullscreen();
-        } else if (customVideoPlayer.msRequestFullscreen) {
-            customVideoPlayer.msRequestFullscreen();
-        }
+    closeVideoButton.addEventListener('click', () => {
+        videoPlayerContainer.style.display = 'none';
+        videoPlayerContainer.innerHTML = '';
     });
 
     profileButton.addEventListener('click', () => openPopup('profilePopup'));
@@ -322,6 +328,11 @@ document.addEventListener('DOMContentLoaded', () => {
             reader.onload = (e) => {
                 document.getElementById('profilePicturePreview').src = e.target.result;
                 document.getElementById('profilePicturePreview').style.display = 'block';
+                if (currentUser) {
+                    users[currentUser].profilePicture = e.target.result;
+                    saveUsers();
+                    socket.emit('updateProfilePicture', { username: currentUser, profilePicture: e.target.result });
+                }
             };
             reader.readAsDataURL(file);
         }
@@ -353,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.closePopup = closePopup;
 
     window.sendNotification = (message) => {
-        socket.emit('sendNotification', { message });
+        socket.emit('sendNotification', { message, username: currentUser });
     };
 
     window.sendCustomMessage = () => {
@@ -376,7 +387,6 @@ document.addEventListener('DOMContentLoaded', () => {
         messageElement.classList.add('chat-message');
         messageElement.innerHTML = `<span>${data.username}: ${data.message}</span><time>${new Date().toLocaleTimeString()}</time>`;
         document.querySelector('.chat-messages').appendChild(messageElement);
-        // Scroll to the bottom when a new message is received
         document.querySelector('.chat-messages').scrollTop = document.querySelector('.chat-messages').scrollHeight;
     });
 
@@ -388,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     socket.on('receiveNotification', (data) => {
-        alert(data.message);
+        alert(`${data.username} says: ${data.message}`);
     });
 
     socket.on('updateUserTimers', (userTimers) => {
@@ -402,7 +412,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.viewProfile = (username) => {
-        alert(`Viewing profile of ${username}`);
+        const user = users[username];
+        if (user) {
+            const profilePicture = user.profilePicture || 'default-profile.png';
+            document.getElementById('profilePicturePreview').src = profilePicture;
+            document.getElementById('profilePicturePreview').style.display = 'block';
+            openPopup('profilePopup');
+        }
     };
 
     const modeToggle = document.getElementById('modeToggle');

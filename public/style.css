@@ -274,7 +274,6 @@ aside {
   z-index: 1000;
 }
 
-
 .chat-box {
   display: none;
   position: fixed;
@@ -563,5 +562,130 @@ button.dark-mode {
   color: #e0e0e0;
 }
 
+/* Responsive styles */
+@media (max-width: 1200px) {
+  main {
+    flex-direction: column;
+  }
 
+  .left-aside, .right-aside {
+    flex: 1 0 auto;
+    margin: 10px 0;
+    border: none;
+    box-shadow: none;
+  }
 
+  .left-aside {
+    margin-right: 0;
+  }
+
+  .right-aside {
+    margin-left: 0;
+  }
+
+  .timer-section {
+    margin: 20px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    margin-bottom: 15px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .profile {
+    margin-top: 15px;
+  }
+
+  main {
+    padding: 10px 20px;
+  }
+
+  .timer-display {
+    font-size: 72px;
+    padding: 20px 40px;
+  }
+
+  .timer-controls {
+    top: calc(50% + 100px);
+  }
+
+  #liveChatButton {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  .chat-box {
+    width: 90%;
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    width: 40px;
+  }
+
+  .site-name {
+    font-size: 22px;
+  }
+
+  .tagline {
+    font-size: 12px;
+  }
+
+  nav ul li a {
+    font-size: 16px;
+  }
+
+  .profile button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  .resources h2, .topic-check h2 {
+    font-size: 20px;
+  }
+
+  .resources ul li a, .topic-check ul li a {
+    font-size: 14px;
+  }
+
+  .timer-display {
+    font-size: 48px;
+    padding: 15px 30px;
+  }
+
+  .timer-controls button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  .popup {
+    width: 90%;
+  }
+
+  .popup-content {
+    padding: 15px;
+  }
+
+  .popup .close-button {
+    font-size: 20px;
+  }
+
+  .controls button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+}

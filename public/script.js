@@ -28,9 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentUser = '';
 
-    
-    }
-
     loginButton.addEventListener('click', () => {
         const username = loginUsernameInput.value.trim();
         const password = loginPasswordInput.value.trim();
@@ -287,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (videoId) {
                 const iframe = document.createElement('iframe');
                 iframe.src = `https://www.youtube.com/embed/${videoId}`;
-                iframe.width = '100%';
+                iframe.width = '560';
                 iframe.height = '315';
                 iframe.frameBorder = '0';
                 iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
@@ -295,18 +292,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 videoPlayerContainer.innerHTML = '';
                 videoPlayerContainer.appendChild(iframe);
                 videoPlayerContainer.style.display = 'block';
-                customVideoPlayer.style.display = 'none'; // Hide the custom video player
             } else {
                 alert('Invalid YouTube link');
             }
         }
     });
 
-    closeVideoButton.addEventListener('click', () => {
-        videoPlayerContainer.style.display = 'none';
-        videoPlayerContainer.innerHTML = '';
-        customVideoPlayer.style.display = 'block'; // Show the custom video player
-    });
     function getYouTubeVideoId(url) {
         const regex = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
         const match = url.match(regex);

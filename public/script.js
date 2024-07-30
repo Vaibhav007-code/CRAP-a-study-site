@@ -28,8 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentUser = '';
 
-    if (window.innerWidth < 768) {
-        alert('Please open the site in desktop mode for a better experience.');
+    
     }
 
     loginButton.addEventListener('click', () => {

@@ -147,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatBox = document.getElementById('chatBox');
     const closeChatButton = document.querySelector('.popup-content .close-button');
     const chatInput = document.querySelector('.chat-input');
+    const chatFileInput = document.getElementById('chatFileInput');
     const usersLink = document.getElementById('usersLink');
     const rewardsLink = document.getElementById('rewardsLink');
     const aboutLink = document.getElementById('aboutLink');
@@ -244,6 +245,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (message) {
             socket.emit('chatMessage', { username: currentUser, message });
             chatInput.value = '';
+        }
+    });
+
+    chatFileInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                socket.emit('fileMessage', { username: currentUser, file: e.target.result, fileName: file.name });
+            };
+            reader.readAsDataURL(file);
         }
     });
 
@@ -382,6 +394,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const messageElement = document.createElement('div');
         messageElement.classList.add('chat-message');
         messageElement.innerHTML = `<span>${data.username}: ${data.message}</span><time>${new Date().toLocaleTimeString()}</time>`;
+        document.querySelector('.chat-messages').appendChild(messageElement);
+        document.querySelector('.chat-messages').scrollTop = document.querySelector('.chat-messages').scrollHeight;
+    });
+
+    socket.on('fileMessage', (data) => {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('chat-message');
+        const fileType = data.file.split(';')[0].split(':')[1];
+        let fileElement;
+
+        if (fileType.startsWith('image/')) {
+            fileElement = `<img src="${data.file}" alt="${data.fileName}" width="200">`;
+        } else if (fileType.startsWith('video/')) {
+            fileElement = `<video controls width="200"><source src="${data.file}" type="${fileType}">Your browser does not support the video tag.</video>`;
+        } else {
+            fileElement = `<a href="${data.file}" download="${data.fileName}">Download ${data.fileName}</a>`;
+        }
+
+        messageElement.innerHTML = `<span>${data.username}: ${fileElement}</span><time>${new Date().toLocaleTimeString()}</time>`;
         document.querySelector('.chat-messages').appendChild(messageElement);
         document.querySelector('.chat-messages').scrollTop = document.querySelector('.chat-messages').scrollHeight;
     });

@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('profilePicturePreview').src = users[username].profilePicture;
                 document.getElementById('profilePicturePreview').style.display = 'block';
             }
+            checkAndUpdateStreak(username);
         } else {
             loginError.textContent = 'Invalid username or password';
         }
@@ -53,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const password = signUpPasswordInput.value.trim();
         if (username && email && password) {
             if (!users[username]) {
-                users[username] = { email, password, profilePicture: '' };
+                users[username] = { email, password, profilePicture: '', streak: { count: 0, lastLogin: '' } };
                 saveUsers();
                 signUpError.textContent = 'Sign up successful. Please login.';
                 signUpForm.style.display = 'none';
@@ -176,6 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let timerInterval;
     let timer = 0;
+    let studyStartTime;
 
     function updateTimerDisplay() {
         const hours = Math.floor(timer / 3600);
@@ -188,9 +190,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startTimer() {
         if (!timerInterval) {
+            studyStartTime = new Date();
             timerInterval = setInterval(() => {
                 timer++;
                 updateTimerDisplay();
+                if (timer === 600) {
+                    alert("Break le, kitna padhega!");
+                }
                 socket.emit('updateTimer', { username: currentUser, timer });
             }, 1000);
         }
@@ -433,4 +439,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     applyMode(currentMode);
+
+    // Additional Functions for Streak
+    function checkAndUpdateStreak(username) {
+        const today = new Date().toISOString().split('T')[0];
+        const userStreak = users[username].streak;
+
+        if (userStreak.lastLogin !== today) {
+            const yesterday = new Date();
+            yesterday.setDate(yesterday.getDate() - 1);
+            const yesterdayStr = yesterday.toISOString().split('T')[0];
+
+            if (userStreak.lastLogin === yesterdayStr) {
+                userStreak.count++;
+            } else {
+                userStreak.count = 1;
+            }
+            userStreak.lastLogin = today;
+            saveUsers();
+        }
+
+        const streakPopup = document.getElementById('streakPopup');
+        const streakCalendar = document.getElementById('streakCalendar');
+        streakCalendar.textContent = `Your current streak is: ${userStreak.count} days.`;
+        streakPopup.style.display = 'block';
+    }
+
+    streakButton.addEventListener('click', () => {
+        const username = localStorage.getItem('currentUser');
+        if (username) {
+            checkAndUpdateStreak(username);
+        }
+    });
 });

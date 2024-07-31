@@ -338,6 +338,18 @@ aside {
   border-bottom-right-radius: 10px;
 }
 
+.file-label {
+  display: block;
+  text-align: center;
+  background-color: #0C8FCB;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+}
+
 /* New styles for pop-ups */
 .popup {
   display: none;
@@ -689,3 +701,4 @@ button.dark-mode {
     font-size: 16px;
   }
 }
+

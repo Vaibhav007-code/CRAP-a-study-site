@@ -42,6 +42,10 @@ io.on('connection', (socket) => {
         io.emit('chatMessage', data);
     });
 
+    socket.on('fileMessage', (data) => {
+        io.emit('fileMessage', data);
+    });
+
     socket.on('requestOnlineUsers', () => {
         socket.emit('onlineUsers', onlineUsers.map(user => user.username));
     });

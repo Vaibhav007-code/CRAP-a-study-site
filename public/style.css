@@ -3,13 +3,12 @@ body {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #1f1f1f;
-  color: #e0e0e0;
+  background-color: #1f1f1f; /* Dark theme */
+  color: #e0e0e0; /* Light text */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
-  transition: background-color 0.5s ease;
 }
 
 /* Header Styles */
@@ -18,31 +17,26 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background: linear-gradient(135deg, #1f1f1f, #009ffd);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+  background: linear-gradient(135deg, #2a2a72, #009ffd); /* Futuristic gradient */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid #333;
-  animation: fadeIn 1s ease-in-out;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.logo img {
+  width: 60px;
+  height: auto;
 }
 
 .site-name {
-  font-size: 34px;
-  font-weight: 700;
+  font-size: 32px;
+  font-weight: bold;
   color: #ffffff;
-  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.8);
-  transition: text-shadow 0.3s ease;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.site-name:hover {
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 1), 0 0 15px #009ffd;
+.tagline {
+  font-size: 16px;
+  color: #e0e0e0;
 }
 
 /* Navigation Styles */
@@ -55,41 +49,45 @@ nav ul {
   gap: 40px;
 }
 
+nav ul li {
+  flex-grow: 1; /* Makes each li element take equal space */
+  display: flex;
+  justify-content: center;
+}
+
 nav ul li a {
   text-decoration: none;
   color: #ffffff;
   font-weight: bold;
   font-size: 18px;
-  padding: 10px 18px;
+  padding: 8px 16px;
   border-radius: 10px;
   transition: all 0.3s ease;
-  background: linear-gradient(135deg, #009ffd, #1f1f1f);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, #009ffd, #2a2a72);
+  text-align: center;
 }
 
 nav ul li a:hover {
-  transform: scale(1.2);
-  background: linear-gradient(135deg, #3fc1ff, #2a2a72);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  transform: scale(1.1); /* Slight zoom effect */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Profile Button Styles */
 .profile button {
-  background: linear-gradient(135deg, #009ffd, #1f1f1f);
+  background: linear-gradient(135deg, #009ffd, #2a2a72);
   color: #ffffff;
   border: none;
-  padding: 16px 32px;
+  padding: 14px 30px;
   border-radius: 30px;
   cursor: pointer;
   font-size: 18px;
-  transition: background-color 0.3s, transform 0.3s;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .profile button:hover {
-  background: linear-gradient(135deg, #ff6f61, #d7263d);
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(135deg, #6d83f2, #3023ae); /* Hover color */
+  transform: translateY(-3px); /* Lift effect */
 }
 
 /* Main Content Styles */
@@ -101,7 +99,7 @@ main {
   text-align: center;
   padding: 40px 60px;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 20px; /* Added gap between main sections */
 }
 
 aside {
@@ -109,14 +107,8 @@ aside {
   padding: 20px;
   background-color: #292929;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
+  border-radius: 15px; /* Rounded corners */
   margin: 10px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-aside:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
 }
 
 /* Timer Section Styles */
@@ -129,24 +121,15 @@ aside:hover {
 }
 
 .timer-display {
-  font-size: 90px;
+  font-size: 80px;
   color: #ffffff;
-  background: linear-gradient(135deg, #ff00cc, #3333ff);
-  padding: 45px 90px;
-  border-radius: 40px;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+  background: linear-gradient(135deg, #ff00cc, #3333ff); /* Gradient with more vibrant colors */
+  padding: 40px 80px;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
   font-family: 'Digital-7', sans-serif;
   text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-  animation: pulse 1s infinite alternate;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.05);
-  }
+  animation: pulse 1.5s infinite alternate;
 }
 
 .timer-controls {
@@ -156,26 +139,26 @@ aside:hover {
 }
 
 .timer-controls button {
-  background: linear-gradient(135deg, #00b4d8, #0077b6);
+  background: linear-gradient(135deg, #00b4d8, #0077b6); /* Gradient buttons */
   color: #fff;
   border: none;
-  padding: 18px 35px;
-  border-radius: 25px;
+  padding: 15px 30px;
+  border-radius: 20px;
   cursor: pointer;
   font-size: 18px;
   font-weight: bold;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s;
 }
 
 .timer-controls button:hover {
-  transform: translateY(-4px) scale(1.1);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  transform: translateY(-2px); /* Lift effect on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Notify Break Button Styles */
-.notify-break, .controls .streak-button {
-  background: linear-gradient(135deg, #ff6f61, #d7263d);
+/* Button Styles for Notify Break and Similar Buttons */
+.hour-count,.notify-break, .controls .streak-button {
+  background: linear-gradient(135deg, #ff6f61, #d7263d); /* Bold gradient */
   color: #ffffff;
   border: none;
   padding: 15px 30px;
@@ -183,22 +166,23 @@ aside:hover {
   cursor: pointer;
   font-size: 18px;
   font-weight: bold;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .notify-break:hover, .controls .streak-button:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
-/* Forms and Login Styles */
+/* Login and Forms Styles */
 #loginPage {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  text-align: center;
   background: linear-gradient(135deg, #2a2a72, #009ffd);
   color: #fff;
 }
@@ -226,7 +210,7 @@ aside:hover {
 }
 
 #loginForm button, #signUpForm button, #forgotPasswordForm button {
-  background: linear-gradient(135deg, #00c9ff, #92fe9d);
+  background: linear-gradient(135deg, #00c9ff, #92fe9d); /* Bright gradient */
   color: white;
   border: none;
   padding: 14px 30px;
@@ -238,8 +222,8 @@ aside:hover {
 }
 
 #loginForm button:hover, #signUpForm button:hover, #forgotPasswordForm button:hover {
-  transform: translateY(-3px);
-  background: linear-gradient(135deg, #6d83f2, #3023ae);
+  transform: translateY(-3px); /* Lift effect */
+  background: linear-gradient(135deg, #6d83f2, #3023ae); /* Hover gradient */
 }
 
 /* Chat Box Styles */
@@ -247,7 +231,7 @@ aside:hover {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background: linear-gradient(135deg, #ff007b, #ff33a0);
+  background: linear-gradient(135deg, #ff007b, #ff33a0); /* Eye-catching gradient */
   color: #fff;
   border: none;
   padding: 18px 35px;
@@ -260,8 +244,7 @@ aside:hover {
 }
 
 #liveChatButton:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  transform: translateY(-3px);
 }
 
 .chat-box {
@@ -269,14 +252,291 @@ aside:hover {
   bottom: 90px;
   right: 30px;
   width: 350px;
-  height: 450px;
+  height: 450px; /* Fixed height */
   background-color: #2c2c2c;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow-y: auto; /* Add vertical scroll */
+  scrollbar-width: thin; /* For Firefox */
+}
+
+.chat-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.chat-header {
+  background: linear-gradient(135deg, #ff007b, #ff33a0);
+  color: white;
+  padding: 12px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Button Styles for "Manage Topics", "Hour Count", "Add Resources" */
+.action-button {
+  background: linear-gradient(135deg, #ff007b, #ff33a0);
+  color: white;
+  padding: 12px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Style for the "Add Resource" Button */
+/* Style for the "Add Resource" Button */
+#resourcesButton {
+  background: linear-gradient(135deg, #ff6f61, #d7263d); /* Warm gradient */
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#resourcesButton:hover {
+  transform: translateY(-3px); /* Lift effect */
+  background: linear-gradient(135deg, #ff8e72, #f5484d);
+}
+
+/* Style for the "Manage Topics" Button */
+#topicButton {
+  background: linear-gradient(135deg, #009ffd, #2a2a72); /* Cool gradient */
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#topicButton:hover {
+  transform: translateY(-3px); /* Lift effect */
+  background: linear-gradient(135deg, #6d83f2, #3023ae);
+}
+
+/* Popup Styles for "Add Resources" and "Manage Topics" */
+.popup {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 500px; /* Fixed max width */
+  max-height: 80vh; /* Prevents vertical overflow */
+  overflow-y: auto; /* Add vertical scroll if content exceeds max height */
+  background-color: #2c2c2c;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup-content {
+  position: relative;
+}
+
+/* Close Button for Popups */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Video Player Container Style in "Add Resources" Popup */
+#videoPlayerContainer {
+  width: 100%;
+  max-width: 450px;
+  height: 250px; /* Fixed height for video player */
+  background-color: #000; /* Black background for video player */
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 15px; /* Spacing between video player and other elements */
+}
+
+/* Ensures video fits perfectly within the player */
+#customVideoPlayer,
+#customVideoPlayer img { /* Applies to both the video player and thumbnail images */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the entire area of the player without stretching */
+}
+
+/* Video Controls Styles */
+.video-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.control-button {
+  background: linear-gradient(135deg, #009ffd, #2a2a72); /* Gradient for control buttons */
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.control-button:hover {
+  transform: translateY(-2px); /* Lift effect */
+  background: linear-gradient(135deg, #6d83f2, #3023ae);
+}
+
+/* Specific Close Button for Video Player */
+#closeVideoButton {
+  background: #e63946; /* Red color for close button */
+}
+
+#closeVideoButton:hover {
+  background: #f85a5a; /* Lighter red on hover */
+}
+
+/* Keyframes for Popup Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+/* Popup Styles for "Add Resources" and "Manage Topics" */
+.popup {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 500px; /* Fixed max width */
+  max-height: 80vh; /* Prevents vertical overflow */
+  overflow-y: auto; /* Add vertical scroll if content exceeds max height */
+  background-color: #2c2c2c;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup-content {
+  position: relative;
+}
+
+/* Close Button for Popups */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Video Player Container Style in "Add Resources" Popup */
+#videoPlayerContainer {
+  width: 100%;
+  max-width: 450px;
+  height: 250px; /* Fixed height for video player */
+  background-color: #000; /* Black background for video player */
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 15px; /* Spacing between video player and other elements */
+}
+
+#customVideoPlayer {
+  width: 100%;
+  height: 100%;
+}
+
+/* Video Controls Styles */
+.video-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.control-button {
+  background: linear-gradient(135deg, #009ffd, #2a2a72); /* Gradient for control buttons */
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.control-button:hover {
+  transform: translateY(-2px); /* Lift effect */
+  background: linear-gradient(135deg, #6d83f2, #3023ae);
+}
+
+/* Specific Close Button for Video Player */
+#closeVideoButton {
+  background: #e63946; /* Red color for close button */
+}
+
+#closeVideoButton:hover {
+  background: #f85a5a; /* Lighter red on hover */
+}
+
+/* Keyframes for Popup Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+
+
+.action-button:hover {
+  transform: translateY(-3px); /* Lift effect */
+  background: linear-gradient(135deg, #6d83f2, #3023ae);
 }
 
 /* Popup Styles */
@@ -300,6 +560,16 @@ aside:hover {
   position: relative;
 }
 
+/* Styling video player in popup */
+.popup .video-player {
+  width: 100%;
+  max-width: 450px;
+  height: 250px;
+  background-color: #000; /* Black background for video player */
+  border-radius: 10px;
+  overflow: hidden;
+}
+
 .close-button {
   position: absolute;
   top: 10px;
@@ -313,9 +583,9 @@ aside:hover {
 
 /* Footer Styles */
 footer {
-  background: linear-gradient(135deg, #1f1f1f, #009ffd);
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.6);
-  padding: 30px 50px;
+  background: linear-gradient(135deg, #2a2a72, #009ffd); /* Footer gradient */
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.5);
+  padding: 20px 40px;
   text-align: center;
   color: #ffffff;
 }
@@ -343,14 +613,26 @@ footer {
     padding: 20px;
   }
 
+  .logo img {
+    width: 50px;
+  }
+
   nav ul {
     flex-direction: column;
     gap: 20px;
   }
 
+  .profile button {
+    padding: 12px 25px;
+  }
+
   .timer-display {
     font-size: 60px;
     padding: 30px 60px;
+  }
+
+  .timer-controls button {
+    padding: 12px 20px;
   }
 
   #liveChatButton {
@@ -362,20 +644,49 @@ footer {
     width: 90%;
     height: 400px;
   }
+
+  aside {
+    flex: 1;
+    margin: 10px 0;
+    box-shadow: none;
+    border: 1px solid #333;
+  }
 }
 
 @media (max-width: 480px) {
+  header {
+    padding: 15px 20px;
+  }
+
+  .logo img {
+    width: 40px;
+  }
+
   .site-name {
     font-size: 24px;
+  }
+
+  .tagline {
+    font-size: 14px;
   }
 
   nav ul li a {
     font-size: 16px;
   }
 
+  .profile button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
   .timer-display {
     font-size: 50px;
     padding: 20px 40px;
+  }
+
+  .timer-controls button {
+    padding: 10px 18px;
+    font-size: 16px;
   }
 
   #liveChatButton {
@@ -386,5 +697,24 @@ footer {
   .chat-box {
     width: 95%;
     height: 300px;
+  }
+
+  .popup {
+    width: 90%;
+  }
+
+  .popup-content {
+    padding: 15px;
+  }
+
+  .close-button {
+    font-size: 20px;
+  }
+
+  aside {
+    width: 90%;
+    margin: 10px 0;
+    box-shadow: none;
+    border: 1px solid #333;
   }
 }
